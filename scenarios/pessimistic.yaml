@@ -1,0 +1,30 @@
+# Pessimistic case — flat market, you relocate at 3 years, special assessment hits
+buy:
+  down_payment_pct: 0.10
+  mortgage_rate: 0.075
+  mortgage_term_years: 30
+  closing_cost_pct: 0.025
+  selling_cost_pct: 0.06
+  annual_appreciation: 0.00     # flat market
+  annual_hoa_increase: 0.07
+  annual_tax_increase: 0.04
+  pmi_annual_rate: 0.008
+
+rent:
+  monthly_rent: 4000
+  annual_rent_increase: 0.02
+  renters_insurance_monthly: 20
+
+ctx:
+  opportunity_cost_rate: 0.08
+  marginal_tax_rate: 0.24
+  use_tax_benefit: false
+  hold_period_years: 3          # relocate scenario
+
+rent_out:
+  expected_rent: 2900           # below mortgage
+  annual_rent_growth: 0.02
+  vacancy_rate: 0.12
+  property_mgmt_pct: 0.10
+  maintenance_annual_pct: 0.012
+  landlord_insurance_uplift: 0.25

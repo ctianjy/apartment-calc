@@ -1,0 +1,13 @@
+# Sample property — replace with real listings as you find them.
+# All monthly amounts in dollars.
+
+name: "Sample Lincoln Park 2BR"
+price: 425000
+monthly_hoa: 525
+monthly_property_tax: 700
+monthly_insurance: 50
+notes: |
+  Boutique 6-story building, ~950 sqft, indoor parking included.
+  HOA includes water, scavenger, common area.
+  Rental cap: 25% of units (verify before offer).
+  Last special assessment: 2022 for facade ($4,200 per unit).

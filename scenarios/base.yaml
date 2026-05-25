@@ -1,0 +1,32 @@
+# Base case assumptions — "what we currently believe"
+# Edit these as you learn more (current rates, comparable rents, etc.)
+
+buy:
+  down_payment_pct: 0.10        # 10% — keeps cash liquid
+  mortgage_rate: 0.065          # PLACEHOLDER — verify current rate
+  mortgage_term_years: 30
+  closing_cost_pct: 0.025
+  selling_cost_pct: 0.06
+  annual_appreciation: 0.03     # PLACEHOLDER — pull Chicago data
+  annual_hoa_increase: 0.04
+  annual_tax_increase: 0.03
+  pmi_annual_rate: 0.007
+
+rent:
+  monthly_rent: 4000            # Foundry-equivalent unit
+  annual_rent_increase: 0.03
+  renters_insurance_monthly: 20
+
+ctx:
+  opportunity_cost_rate: 0.07   # S&P historical ~7% real
+  marginal_tax_rate: 0.24
+  use_tax_benefit: false         # Conservative: off (most filers don't itemize post-TCJA)
+  hold_period_years: 5
+
+rent_out:
+  expected_rent: 3200           # PLACEHOLDER — research comparable rents
+  annual_rent_growth: 0.03
+  vacancy_rate: 0.08
+  property_mgmt_pct: 0.10
+  maintenance_annual_pct: 0.01
+  landlord_insurance_uplift: 0.25
