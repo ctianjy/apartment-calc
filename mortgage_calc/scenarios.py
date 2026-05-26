@@ -40,6 +40,7 @@ class BuyAssumptions:
     annual_hoa_increase: float = 0.04    # 4%/yr — HOAs creep
     annual_tax_increase: float = 0.03    # 3%/yr
     pmi_annual_rate: float = 0.007       # 0.7%/yr if under 20% down
+    annual_maintenance_pct: float = 0.01 # 1% of home value/yr
 
 
 @dataclass
@@ -77,6 +78,7 @@ class ScenarioResult:
     cash_on_cash_return_pct: float
     principal_paid: float
     interest_paid: float
+    maintenance_paid: float
 
     # Rent side
     total_rent_paid: float
@@ -139,8 +141,9 @@ def run_scenario(
 
         # PMI (recalculated as balance shrinks)
         pmi = pmi_monthly(balance, prop.price, buy.pmi_annual_rate)
+        maintenance = prop.price * buy.annual_maintenance_pct / 12
 
-        own_monthly = pmt + hoa + tax + ins + pmi
+        own_monthly = pmt + hoa + tax + ins + pmi + maintenance
         total_paid_owning += own_monthly
 
         # Renter pays this month
@@ -194,7 +197,8 @@ def run_scenario(
     return ScenarioResult(
         cash_invested=cash_invested,
         monthly_payment_year_1=pmt + prop.monthly_hoa + prop.monthly_property_tax
-        + prop.monthly_insurance + pmi_monthly(loan_amount, prop.price, buy.pmi_annual_rate),
+        + prop.monthly_insurance + pmi_monthly(loan_amount, prop.price, buy.pmi_annual_rate)
+        + prop.price * buy.annual_maintenance_pct / 12,
         total_paid_owning=total_paid_owning,
         sale_price=sale_price,
         selling_costs=selling_costs,
@@ -204,6 +208,7 @@ def run_scenario(
         cash_on_cash_return_pct=cash_on_cash,
         principal_paid=total_principal,
         interest_paid=total_interest,
+        maintenance_paid=prop.price * buy.annual_maintenance_pct * ctx.hold_period_years,
         total_rent_paid=total_rent_paid,
         monthly_savings_vs_rent=monthly_savings,
         opportunity_cost_of_cash=opportunity_cost,
